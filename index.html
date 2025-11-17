@@ -43,7 +43,6 @@
       font-weight: bold;
       position: relative;
       z-index: 1;
-      transition: 0.3s ease;
     }
 
     #nao {
@@ -59,21 +58,55 @@
       color: white;
       font-size: 14px;
       line-height: 1.6;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    #mensagemFinal.show {
-      display: block;
-      opacity: 1;
     }
   </style>
 </head>
 <body>
   <div class="heart">
-    <h2 id="pergunta">Quer sair comigo?</h2>
+    <h2 id="pergunta">quer sair comigo?</h2>
     <button id="sim">Sim</button>
     <button id="nao">Não</button>
 
-    <div id="mensagemF
+    <div id="mensagemFinal">
+      <p><strong>ok, então tá marcado, dia 20,</strong></p>
+      <p><strong>sua missão:</strong> se arrumar</p>
+      <p><strong>local:</strong> sala de jantar da minha casa, às 20ho</p>
+      <p><em>o vinho é da sua escolha ok</em> 🍹</p>
+    </div>
+  </div>
 
+  <script>
+    const btnNao = document.getElementById("nao");
+    const btnSim = document.getElementById("sim");
+    const pergunta = document.getElementById("pergunta");
+    const mensagemFinal = document.getElementById("mensagemFinal");
+
+    // Botão "Não" fugindo do mouse
+    document.querySelector(".heart").addEventListener("mousemove", (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const rect = btnNao.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
+
+      const distancia = Math.hypot(mouseX - btnX, mouseY - btnY);
+
+      if (distancia < 100) {
+        const offsetX = (Math.random() - 0.5) * 200;
+        const offsetY = (Math.random() - 0.5) * 200;
+        btnNao.style.top = `${Math.min(Math.max(20, btnNao.offsetTop + offsetY), 250)}px`;
+        btnNao.style.left = `${Math.min(Math.max(20, btnNao.offsetLeft + offsetX), 250)}px`;
+      }
+    });
+
+    // Botão "Sim"
+    btnSim.addEventListener("click", () => {
+      btnSim.style.display = "none";
+      btnNao.style.display = "none";
+      pergunta.style.display = "none";
+      mensagemFinal.style.display = "block";
+    });
+  </script>
+</body>
+</html>
