@@ -30,6 +30,50 @@
 
     h2, p {
       color: white;
-      margin-botto
+      margin-bottom: 15px;
+    }
 
+    button {
+      background-color: #00e5ff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      transition: 0.3s ease;
+    }
+
+    #nao {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+
+    #mensagemFinal {
+      display: none;
+      color: white;
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #mensagemFinal.show {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart">
+    <h2 id="pergunta">Quer sair comigo?</h2>
+    <button id="sim">Sim</button>
+    <button id="nao">Não</button>
+
+    <div id="mensagemF
 
